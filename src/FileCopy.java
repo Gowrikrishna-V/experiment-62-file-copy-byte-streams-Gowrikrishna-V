@@ -11,12 +11,14 @@ public class FileCopy {
         try (FileInputStream fis = new FileInputStream(sourceFile);
              FileOutputStream fos = new FileOutputStream(destFile)) {
             
-            // TODO: Declare an integer variable to hold the byte read
+            // Declare an integer variable to hold the byte read
             int byteData;
             
-            // TODO: Read from 'fis' until it returns -1
-            // TODO: Write the byte read to 'fos'
-            
+            // Read from 'fis' until it returns -1
+            while ((byteData = fis.read()) != -1) {
+                // Write the byte read to 'fos'
+                fos.write(byteData);
+            }
 
         } catch (IOException e) {
             System.out.println("Error during file copy: " + e.getMessage());
@@ -28,8 +30,12 @@ public class FileCopy {
         // Part 2: Read and display the contents of the newly created destination file
         try (FileInputStream fis = new FileInputStream(destFile)) {
             
-            // TODO: Read from 'fis' and print each byte as a character to the console
-            // Hint: use (char) to cast the integer byte to a character before printing
+            int byteData;
+
+            // Read from 'fis' and print each byte as a character
+            while ((byteData = fis.read()) != -1) {
+                System.out.print((char) byteData);
+            }
 
         } catch (IOException e) {
             System.out.println("Error reading destination file: " + e.getMessage());
